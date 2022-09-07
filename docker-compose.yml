@@ -1,0 +1,23 @@
+version: '3'
+services:
+  api:
+    container_name: api
+    build: ./blog
+    volumes:
+      - "./blog:/var/lib/app"
+    depends_on:
+      - db
+    command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
+    ports:
+      - 8000:8000
+  db:
+    build: ./db
+    container_name: mypg
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: test_db
