@@ -4,6 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 DATABASE_URL = 'postgresql://{user}:{password}@{host}:{port}/{database}'.format(**{
+    # 外部ファイルから引っ張ってくる
     'user': os.getenv("POSGRE_USER", 'admin'),
     'password': os.getenv("POSGRE_PASSWORD", 'admin'),
     'host': os.getenv("POSGRE_HOST", 'mypg'),
