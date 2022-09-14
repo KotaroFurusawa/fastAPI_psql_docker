@@ -10,6 +10,7 @@ class User(Base):
     email = Column(String)
     password = Column(String)
     blogs = relationship('Blog', back_populates='creator')
+    refreshToken = Column(String)
 
 
 class Blog(Base):
