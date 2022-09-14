@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Depends, status, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 from .. import models, token
-from ..schemas import Login
 from ..database import get_db
 from ..hashing import Hash
 from sqlalchemy.orm import Session
@@ -28,7 +27,7 @@ def login(request: OAuth2PasswordRequestForm = Depends(),
             detail='Incorrect password')
 
     access_token = token.create_access_token(
-        data={"sub": user.email}
+        data={"sub": user.email, "id": user.id}
     )
 
     return {"access_token": access_token, "token_type": "bearer"}

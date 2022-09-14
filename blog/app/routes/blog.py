@@ -1,6 +1,6 @@
 from typing import List
 from fastapi import APIRouter, Depends, status
-from ..schemas import Blog, ShowBlog
+from ..schemas import Blog, ShowBlog, User
 from ..database import get_db
 from sqlalchemy.orm import Session
 from ..functions import blog
@@ -19,8 +19,9 @@ def all_fetch(db: Session = Depends(get_db),
 
 
 @router.post('/', status_code=status.HTTP_201_CREATED)
-def create(request: Blog, db: Session = Depends(get_db)):
-    return blog.create(request, db)
+def create(request: Blog, db: Session = Depends(get_db),
+           current_user=Depends(oauth2.get_current_user)):
+    return blog.create(request, db, current_user)
 
 
 @router.get('/{id}', status_code=status.HTTP_200_OK,
