@@ -16,6 +16,7 @@ services:
       POSGRE_HOST: $POSGRE_HOST
       POSGRE_PORT: $POSGRE_PORT
       POSGRE_DATABASE: $POSGRE_DATABASE
+      PYTHONPATH: /var/lib/app
   db:
     build: ./db
     container_name: mypg

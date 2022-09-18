@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-from .database import Base
+from app.database import Base
 
 
 class User(Base):
@@ -11,6 +11,7 @@ class User(Base):
     password = Column(String)
     blogs = relationship('Blog', back_populates='creator')
     refreshToken = Column(String)
+    test = Column(String)
 
 
 class Blog(Base):

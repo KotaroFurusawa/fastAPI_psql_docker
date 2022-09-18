@@ -6,3 +6,5 @@ bcrypt
 passlib
 python-jose
 python-multipart
+alembic 
+psycopg2-binary
