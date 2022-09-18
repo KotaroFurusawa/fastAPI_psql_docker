@@ -5,11 +5,11 @@ from sqlalchemy.orm import sessionmaker
 
 DATABASE_URL = 'postgresql://{user}:{password}@{host}:{port}/{database}'.format(**{
     # 外部ファイルから引っ張ってくる
-    'user': os.getenv("POSGRE_USER", 'admin'),
-    'password': os.getenv("POSGRE_PASSWORD", 'admin'),
-    'host': os.getenv("POSGRE_HOST", 'mypg'),
-    'port': os.getenv("POSGRE_PORT", "5432"),
-    'database': os.getenv("POSGRE_DATABASE", 'test_db')
+    'user': os.getenv("POSGRE_USER"),
+    'password': os.getenv("POSGRE_PASSWORD"),
+    'host': os.getenv("POSGRE_HOST"),
+    'port': os.getenv("POSGRE_PORT"),
+    'database': os.getenv("POSGRE_DATABASE")
 })
 
 engine = create_engine(DATABASE_URL)
